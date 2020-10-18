@@ -436,8 +436,8 @@
   .block-editor-url-input__button-modal {
     position: absolute; 
     right: 0;
-    left: 0;
-    bottom: 100%;
+    // left: 0;
+    top: 0;
     margin: 0 auto; 
     max-width: 320px;
     z-index: 30; 

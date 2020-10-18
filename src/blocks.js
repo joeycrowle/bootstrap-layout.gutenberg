@@ -8,7 +8,7 @@ import './card';
 import './cardHeader';
 import './cardBody';
 import './cardFooter';
-import './accordion';
+// import './accordion';
 // import './collapse';
 import './jumbotron';
 
