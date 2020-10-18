@@ -1,7 +1,6 @@
 === Advanced Bootstrap Blocks ===
-Contributors: helpfuldev, mannis82
+Contributors: helpfuldev
 Tags: bootstrap, responsive, layout, grid, page builder, container, columns, blocks, button, group, editor, gutenberg
-Donate link: https://paypal.me/helpfuldev
 Requires at least: 5.2
 Tested up to: 5.5
 Stable tag: trunk
@@ -80,6 +79,10 @@ This plugin does not add Bootstrap stylesheets or scripts to your website.
 Yes. Please submit issues, bugs, and feature requests through the [plugin support page](https://wordpress.org/support/plugin/advanced-bootstrap-blocks/) or browse the source and contribute at [GitHub](https://github.com/advanced-bootstrap-blocks/advanced-bootstrap-blocks) or [GitLab](https://gitlab.com/helpful.dev/advanced-bootstrap-blocks) (mirror). 
 
 == Changelog ==
+
+### 1.5
+* Bugfix: Improve drag/drop Container block behavior in WordPress v5.5.1
+* Adjust visibility of blocks with .modal and .d-*-none classNames
 
 ### 1.4
 * Add Jumbotron block
