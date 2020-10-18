@@ -13,5 +13,5 @@ import './accordion';
 import './jumbotron';
 
 import './blocks.editor.scss';
-import './blocks.style.scss';
-import './common.scss';
+// import './blocks.style.scss';
+// import './common.scss';

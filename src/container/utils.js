@@ -24,10 +24,12 @@ export const setBlockAttributes = ( attributes ) => {
 export const modifyBlockListBlockContainer = createHigherOrderComponent( ( BlockListBlock ) => {
   return ( props ) => {
     if (props.block.name == "advanced-bootstrap-blocks/container") {
-      props.className = props.attributes.isWrapped ? props.className : "";
+      const isDropTarget = typeof props.className !== "undefined" ? !props.className.indexOf('is-drop-target') : false; 
+      console.log(props.attributes.isWrapped)
+      props.className = props.attributes.isWrapped ? props.className : isDropTarget ? "is-drop-target" : "";
     }
     return <BlockListBlock { ...props } />;
-  };
+  }; 
 }, 'modifyBlockListBlockContainer' );
 
 export const modifyGetSaveElementContainer = (element, blockType, attributes ) => {
@@ -68,14 +70,12 @@ export const modifyGetSaveElementContainer = (element, blockType, attributes ) =
           ...attributes.backgroundImage.hasOwnProperty("full") ? {
             style: {
               backgroundImage: `url(${attributes.backgroundImage.full.url})`,
-              ...attributes.backgroundSize ? { backgroundSize: `${attributes.backgroundSize}` } : { },
-              ...attributes.backgroundRepeat ? { backgroundRepeat: `${attributes.backgroundRepeat}` } : { },
-              ...attributes.backgroundPosition ? attributes.backgroundPosition.hasOwnProperty("x") ? { backgroundPosition: `${ Math.round(attributes.backgroundPosition.x * 100) }% ${ Math.round(attributes.backgroundPosition.y * 100) }%` } : { } : { },
-              ...attributes.backgroundAttachment ? { backgroundAttachment: `${attributes.backgroundAttachment}` } : { },
+              ...attributes.backgroundSize ? { backgroundSize: `${attributes.backgroundSize}` } : null,
+              ...attributes.backgroundRepeat ? { backgroundRepeat: `${attributes.backgroundRepeat}` } : null,
+              ...attributes.backgroundPosition ? attributes.backgroundPosition.hasOwnProperty("x") ? { backgroundPosition: `${ Math.round(attributes.backgroundPosition.x * 100) }% ${ Math.round(attributes.backgroundPosition.y * 100) }%` } : null : null,
+              ...attributes.backgroundAttachment ? { backgroundAttachment: `${attributes.backgroundAttachment}` } : null,
             }
-          } : {
-
-          }
+          } : null
         }
       >
         {element}

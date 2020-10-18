@@ -60,20 +60,18 @@ export const edit = (props) => {
     <Fragment>
       <Fragment>
         <div 
-          {...anchor ? { id: anchor } : { } }
+          {...anchor ? { id: anchor } : null }
           className={classNameAttribute()}
           { // conditionally render style attribute with backgroundImage property
             ...backgroundImage.hasOwnProperty("full") ? {
               style: {
                 backgroundImage: `url(${backgroundImage.full.url})`,
-                ...backgroundSize ? { backgroundSize: `${backgroundSize}` } : { },
-                ...backgroundRepeat ? { backgroundRepeat: `${backgroundRepeat}` } : { },
-                ...backgroundPosition ? backgroundPosition.hasOwnProperty("x") ? { backgroundPosition: `${ Math.round(backgroundPosition.x * 100) }% ${ Math.round(backgroundPosition.y * 100) }%` } : { } : { },
-                ...backgroundAttachment ? { backgroundAttachment: `${backgroundAttachment}` } : { },
+                ...backgroundSize ? { backgroundSize: `${backgroundSize}` } : null,
+                ...backgroundRepeat ? { backgroundRepeat: `${backgroundRepeat}` } : null,
+                ...backgroundPosition ? backgroundPosition.hasOwnProperty("x") ? { backgroundPosition: `${ Math.round(backgroundPosition.x * 100) }% ${ Math.round(backgroundPosition.y * 100) }%` } : null : null,
+                ...backgroundAttachment ? { backgroundAttachment: `${backgroundAttachment}` } : null,
               }
-            } : {
-
-            }
+            } : null
           }
         >
           <InnerBlocks 

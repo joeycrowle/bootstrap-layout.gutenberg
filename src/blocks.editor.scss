@@ -147,12 +147,41 @@
   }
 }
 @import "../node_modules/bootstrap/scss/utilities/spacing";
+
+/*
+ * Editor-specific Bootstrap overrides
+ */
+[data-type^="advanced-bootstrap-blocks/"] {
+  & > .d-none,
+  & > .d-sm-none,
+  & > .d-md-none,
+  & > .d-lg-none,
+  & > .d-xl-none,
+  & > .d-print-none,
+  & > .modal {
+    display: block!important;
+  }
+  & > .modal {
+    position: relative;
+  }
+  &:not(.is-selected):not(.has-child-selected) > .d-none,
+  &:not(.is-selected):not(.has-child-selected) > .d-sm-none,
+  &:not(.is-selected):not(.has-child-selected) > .d-md-none,
+  &:not(.is-selected):not(.has-child-selected) > .d-lg-none,
+  &:not(.is-selected):not(.has-child-selected) > .d-xl-none,
+  &:not(.is-selected):not(.has-child-selected) > .d-print-none,
+  &:not(.is-selected):not(.has-child-selected) > .modal {
+    opacity: 50%;
+  }
+}
+
 /*
  * Gutenberg Overrides
  */
 
 .components-base-control {
   &.components-range-control {
+    width: 100%;
     margin-bottom: 0 !important;
     .components-base-control__field {
       .components-base-control__label {
@@ -186,7 +215,19 @@
       width: auto; 
     }
   }
+  .block-list-appender {
+    margin: 0 !important; 
+  }
 }
+[data-type="advanced-bootstrap-blocks/container"] {
+  &.wp-block {
+    margin-top: 14px;
+    &.is-drop-target {
+      margin-top: 28px;
+    }
+  }
+}
+
 [data-type="advanced-bootstrap-blocks/container"],
 [data-type="advanced-bootstrap-blocks/row"],
 [data-type="advanced-bootstrap-blocks/jumbotron"] {
@@ -295,9 +336,6 @@
   }
   [data-type="core/paragraph"] + [data-type="core/paragraph"] {
     // margin-top: 10px;
-  }
-  .block-list-appender:empty {
-    margin: 0 !important; 
   }
 
   > div {
