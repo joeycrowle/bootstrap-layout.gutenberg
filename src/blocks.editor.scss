@@ -158,7 +158,8 @@
   & > .d-lg-none,
   & > .d-xl-none,
   & > .d-print-none,
-  & > .modal {
+  & > .modal,
+  & > .collapse {
     display: block!important;
   }
   & > .modal {
@@ -170,7 +171,8 @@
   &:not(.is-selected):not(.has-child-selected) > .d-lg-none,
   &:not(.is-selected):not(.has-child-selected) > .d-xl-none,
   &:not(.is-selected):not(.has-child-selected) > .d-print-none,
-  &:not(.is-selected):not(.has-child-selected) > .modal {
+  &:not(.is-selected):not(.has-child-selected) > .modal,
+  &:not(.is-selected):not(.has-child-selected) > .collapse {
     opacity: 50%;
   }
 }
