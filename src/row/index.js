@@ -75,7 +75,7 @@ registerBlockType('advanced-bootstrap-blocks/row', {
 
     return (
       <div 
-        {...anchor ? { id: anchor } : { } }
+        {...anchor ? { id: anchor } : null }
         className={props.className}
       >
         <InnerBlocks 
@@ -111,7 +111,7 @@ wp.hooks.addFilter(
 const modifyBlockListBlockRow = createHigherOrderComponent( ( BlockListBlock ) => {
     return ( props ) => {
       if (props.block.name == "advanced-bootstrap-blocks/row") {
-        props.className = ["row", props.className].join(" ").trim();
+        return <BlockListBlock {...props } className="row" />;
       }
       return <BlockListBlock { ...props } />;
     };
@@ -131,7 +131,7 @@ const modifyGetSaveElementRow = (element, blockType, attributes ) => {
   if (blockType.name == 'advanced-bootstrap-blocks/row') {
     return (
       <div 
-        {...attributes.anchor ? { id: attributes.anchor } : { } } 
+        {...attributes.anchor ? { id: attributes.anchor } : null } 
         className={ ["row", element.props.className].join(" ").trim() }
       >
         {element}

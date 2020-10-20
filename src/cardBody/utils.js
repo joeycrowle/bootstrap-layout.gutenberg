@@ -17,7 +17,7 @@ export const setBlockCustomClassName = ( blockName ) => {
 export const modifyBlockListBlockCardBody = createHigherOrderComponent( ( BlockListBlock ) => {
   return ( props ) => {
     if (props.block.name == 'advanced-bootstrap-blocks/card-body') {
-      props.className = ["card-body", props.block.attributes.className].join(" ").trim();
+      return <BlockListBlock { ...props } className={ ["card-body", props.attributes.className].join(" ").trim() } />;
     }
     return <BlockListBlock { ...props } />;
   };

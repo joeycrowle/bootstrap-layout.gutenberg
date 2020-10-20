@@ -53,7 +53,7 @@ export const edit = (props) => {
 
   const classNameAttribute = () => {
     const containerClass = isFluid ? "container-fluid" : "container"; 
-    return [className, containerClass].join(" ").trim();
+    return [containerClass, className].join(" ").trim();
   }
 
   return (
