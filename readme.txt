@@ -80,8 +80,13 @@ Yes. Please submit issues, bugs, and feature requests through the [plugin suppor
 
 == Changelog ==
 
+### 1.6
+* Bugfix: remove forced Column padding reset
+* Bugfix: fix Card Header content bug
+* Bugfix: assign key to to mapped values in padding + margin inspectors
+
 ### 1.5
-* Bugfix: Improve drag/drop Container block behavior in WordPress v5.5.1
+* Bugfix: improve drag/drop Container block behavior in WordPress v5.5.1
 * Adjust visibility of blocks with .modal and .d-*-none classNames
 
 ### 1.4

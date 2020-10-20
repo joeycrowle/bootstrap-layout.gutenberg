@@ -30,7 +30,7 @@ const settings = {
       type: 'array',
       default: [
         ['advanced-bootstrap-blocks/card-header', {} ,[
-          ['core/heading', { className: 'mb-0', level: '3', content: __('Card Title') } ,[]],
+          ['core/heading', { className: 'my-0', level: 3, content: __('Card Title') } ,[]],
         ]],
         ['advanced-bootstrap-blocks/card-body', {} ,[]],
       ]

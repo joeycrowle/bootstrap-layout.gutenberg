@@ -121,7 +121,7 @@ export const CustomMarginInspector = createHigherOrderComponent( ( BlockEdit ) =
             {
               props.isSelected && Object.keys(marginObject).map((key, index) => {
                 return (
-                  <PanelRow>
+                  <PanelRow key={index}>
                     <MarginControl 
                         property={ marginObject[key].property } 
                         breakpoint={ marginObject[key].breakpoint }

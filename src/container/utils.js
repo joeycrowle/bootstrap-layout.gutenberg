@@ -25,7 +25,6 @@ export const modifyBlockListBlockContainer = createHigherOrderComponent( ( Block
   return ( props ) => {
     if (props.block.name == "advanced-bootstrap-blocks/container") {
       const isDropTarget = typeof props.className !== "undefined" ? !props.className.indexOf('is-drop-target') : false; 
-      console.log(props.attributes.isWrapped)
       props.className = props.attributes.isWrapped ? props.className : isDropTarget ? "is-drop-target" : "";
     }
     return <BlockListBlock { ...props } />;

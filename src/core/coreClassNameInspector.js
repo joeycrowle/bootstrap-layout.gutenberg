@@ -28,9 +28,10 @@ export const CustomClassNameInspector = createHigherOrderComponent( ( BlockEdit 
                     props.attributes.className
                     .split(" ")
                     .filter(item => item.trim() != '')
-                    .map((item) => {
+                    .map((item, index) => {
                       return (
-                          <button
+                          <button 
+                            key={index}
                             className="d-inline badge badge-primary border-0 font-weight-light mb-2 mr-2"
                             onClick={() =>  {
                                 const classNameList = typeof props.attributes.className !== "undefined" ? props.attributes.className.split(" ") : []; 
@@ -62,9 +63,9 @@ export const CustomClassNameInspector = createHigherOrderComponent( ( BlockEdit 
               {
                 customClassNames
                   .filter(item => item.className.indexOf(props.attributes.classNameFilter) != -1 ? true : false )
-                  .map((item) => {
+                  .map((item, index) => {
                     return (
-                      <PanelRow className="mt-0">
+                      <PanelRow className="mt-0" key={index}>
                         <label
                         >
                           <input 

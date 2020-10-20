@@ -121,7 +121,7 @@ export const CustomPaddingInspector = createHigherOrderComponent( ( BlockEdit ) 
             {
               props.isSelected && Object.keys(paddingObject).map((key, index) => {
                   return (
-                    <PanelRow>
+                    <PanelRow key={index}>
                       <PaddingControl 
                         property={ paddingObject[key].property } 
                         breakpoint={ paddingObject[key].breakpoint }

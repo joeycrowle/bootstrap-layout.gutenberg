@@ -200,7 +200,7 @@ export const CustomColumnInspector = createHigherOrderComponent( ( BlockEdit ) =
             {
               props.isSelected && Object.keys(columnObject).map((key, index) => {
                 return (
-                  <Fragment>
+                  <Fragment key={index}>
                     <PanelRow>
                       <ColumnControl 
                         breakpoint={ columnObject[key].breakpoint }
