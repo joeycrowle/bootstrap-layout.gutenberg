@@ -124,7 +124,7 @@ wp.hooks.addFilter(
 const modifyBlockListBlockAccordion = createHigherOrderComponent( ( BlockListBlock ) => {
     return ( props ) => {
       if (props.block.name == "advanced-bootstrap-blocks/accordion") {
-        props.className = ["accordion", props.className].join(" ").trim();
+        return <BlockListBlock { ...props } className="accordion"/>;
       }
       return <BlockListBlock { ...props } />;
     };

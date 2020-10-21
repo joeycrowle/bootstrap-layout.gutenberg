@@ -17,7 +17,7 @@ export const setBlockCustomClassName = ( blockName ) => {
 export const modifyBlockListBlockCardFooter = createHigherOrderComponent( ( BlockListBlock ) => {
   return ( props ) => {
     if (props.block.name == 'advanced-bootstrap-blocks/card-footer') {
-      props.className = ["card-footer", props.block.attributes.className].join(" ").trim();
+      return <BlockListBlock {...props } className={ ["card-footer", props.attributes.className].join(" ").trim() } />;
     }
     return <BlockListBlock { ...props } />;
   };

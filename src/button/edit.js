@@ -80,7 +80,7 @@ export const edit = (props) => {
     <Fragment>
       <div className={[block ? "d-flex" : "d-inline-flex", "align-items-center"].join(" ")}>
         <a
-          {...anchor ? { id: anchor } : { } }
+          {...anchor ? { id: anchor } : null }
           className={[className, size, buttonStyle(props.attributes), "btn"].join(" ")} 
           href={link} 
           target={newWindow && '_blank'}

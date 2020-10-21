@@ -111,7 +111,7 @@ wp.hooks.addFilter(
 const modifyBlockListBlockRow = createHigherOrderComponent( ( BlockListBlock ) => {
     return ( props ) => {
       if (props.block.name == "advanced-bootstrap-blocks/jumbotron") {
-        props.className = [props.className, "jumbotron"].join(" ");
+        return <BlockListBlock { ...props } className="jumbotron"/>;
       }
       return <BlockListBlock { ...props } />;
     };
@@ -131,7 +131,7 @@ const modifyGetSaveElementRow = (element, blockType, attributes ) => {
   if (blockType.name == 'advanced-bootstrap-blocks/jumbotron') {
     return (
       <div 
-        {...attributes.anchor ? { id: attributes.anchor } : { } } 
+        {...attributes.anchor ? { id: attributes.anchor } : null } 
         className={ ["jumbotron", element.props.className].join(" ").trim() }
       >
         {element}

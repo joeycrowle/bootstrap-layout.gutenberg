@@ -17,7 +17,6 @@ export const setBlockCustomClassName = ( blockName ) => {
 export const setBlockAttributes = ( attributes ) => {
   if (typeof attributes.className !== "undefined")
     attributes.className = attributes.className.replace(`${defaultClassName} `, "");
-  
 	return attributes;
 }
 
@@ -25,7 +24,12 @@ export const modifyBlockListBlockContainer = createHigherOrderComponent( ( Block
   return ( props ) => {
     if (props.block.name == "advanced-bootstrap-blocks/container") {
       const isDropTarget = typeof props.className !== "undefined" ? !props.className.indexOf('is-drop-target') : false; 
-      props.className = props.attributes.isWrapped ? props.className : isDropTarget ? "is-drop-target" : "";
+      return (
+        <BlockListBlock 
+          { ...props } 
+          className={ props.attributes.isWrapped ? props.attributes.className : isDropTarget ? "is-drop-target" : null }
+        />
+      );
     }
     return <BlockListBlock { ...props } />;
   }; 
@@ -50,9 +54,7 @@ export const modifyGetSaveElementContainer = (element, blockType, attributes ) =
                 ...attributes.backgroundPosition ? attributes.backgroundPosition.hasOwnProperty("x") ? { backgroundPosition: `${ Math.round(attributes.backgroundPosition.x * 100) }% ${ Math.round(attributes.backgroundPosition.y * 100) }%` } : { } : { },
                 ...attributes.backgroundAttachment ? { backgroundAttachment: `${attributes.backgroundAttachment}` } : { },
               }
-            } : {
-
-            }
+            } : null
           }
         >
           <div className={ attributes.isFluid ? "container-fluid" : "container" }>
