@@ -80,6 +80,9 @@ Yes. Please submit issues, bugs, and feature requests through the [plugin suppor
 
 == Changelog ==
 
+### 1.7
+* Bugfix: Fix right-hand props.className assignment in editor.BlockListBlock filters
+
 ### 1.6
 * Bugfix: remove forced Column padding reset
 * Bugfix: fix Card Header content bug
