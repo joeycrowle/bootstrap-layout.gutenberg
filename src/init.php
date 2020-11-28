@@ -35,7 +35,7 @@ function advanced_bootstrap_blocks_block_assets() { // phpcs:ignore
 				array(
 						array(
 								'slug'  => 'advanced-bootstrap-blocks',
-								'title' => 'Advanced Bootstrap Blocks',
+								'title' => 'Bootstrap Layout',
 						),
 				)
 		);
@@ -75,7 +75,7 @@ function advanced_bootstrap_blocks_block_assets() { // phpcs:ignore
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type#enqueuing-block-scripts
 	 * @since 1.16.0
-	 */	
+	 */
 	register_block_type(
 		'advanced-bootstrap-blocks/container', array(
 			// Enqueue blocks.style.build.css on both frontend & backend.
@@ -88,21 +88,21 @@ function advanced_bootstrap_blocks_block_assets() { // phpcs:ignore
 			'reusable'			=> true,
 		)
 	);
-	
+
 	add_theme_support( 'align-wide' );
 	// add_theme_support( 'align-full' );
 
 	add_action( 'admin_menu', 'reusable_blocks_adminbar_item' );
 	function reusable_blocks_adminbar_item() {
 		// add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
-		add_menu_page( 
-			'Reusable Blocks', 
-			'Reusable Blocks', 
-			'manage_options', 
-			'edit.php?post_type=wp_block', 
-			'', 
-			'dashicons-welcome-widgets-menus', 
-			20 
+		add_menu_page(
+			'Reusable Blocks',
+			'Reusable Blocks',
+			'manage_options',
+			'edit.php?post_type=wp_block',
+			'',
+			'dashicons-welcome-widgets-menus',
+			20
 		);
 	}
 }

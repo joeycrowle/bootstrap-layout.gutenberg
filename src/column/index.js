@@ -1,21 +1,21 @@
 const { __ } = wp.i18n;
 
-const { 
+const {
   registerBlockType,
 } = wp.blocks;
 
-import { edit } from './edit'; 
-import { save } from './save'; 
-import { 
+import { edit } from './edit';
+import { save } from './save';
+import {
   modifyBlockListBlockColumn,
   modifyGetSaveElementColumn,
   setBlockCustomClassName,
 } from './utils';
 
-import icon from '../core/icon-bootstrap.svg'; 
+import icon from '../core/icon-column.svg';
 
 registerBlockType('advanced-bootstrap-blocks/column', {
-  title: __('Column (BS4)', 'advanced-bootstrap-blocks'),
+  title: __('Column', 'advanced-bootstrap-blocks'),
   description: __(''),
   icon: icon,
   category: 'advanced-bootstrap-blocks',
@@ -38,14 +38,14 @@ registerBlockType('advanced-bootstrap-blocks/column', {
 });
 
 wp.hooks.addFilter(
-  'editor.BlockListBlock', 
-  'advanced-bootstrap-blocks/column/modify-element-edit', 
-  modifyBlockListBlockColumn 
+  'editor.BlockListBlock',
+  'advanced-bootstrap-blocks/column/modify-element-edit',
+  modifyBlockListBlockColumn
 );
 
 wp.hooks.addFilter(
-  'blocks.getSaveElement', 
-  'advanced-bootstrap-blocks/column/modify-element-save', 
+  'blocks.getSaveElement',
+  'advanced-bootstrap-blocks/column/modify-element-save',
   modifyGetSaveElementColumn
 );
 

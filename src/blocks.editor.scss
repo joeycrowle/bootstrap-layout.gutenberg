@@ -1,20 +1,9 @@
 @import "./common.scss";
-
-/*!
- * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
-// @import "../node_modules/bootstrap/scss/functions";
-// @import "../node_modules/bootstrap/scss/variables";
-// @import "../node_modules/bootstrap/scss/mixins";
-// @import "../node_modules/bootstrap/scss/root";
-// @import "../node_modules/bootstrap/scss/reboot";
-// @import "../node_modules/bootstrap/scss/type";
-// @import "../node_modules/bootstrap/scss/mixins/breakpoints";
-// contents of "../node_modules/bootstrap/scss/mixins/grid-framework";
+
+$containerColor: #ee04ff;
+$rowColor: #0acaff;
+$columColor: #00ffcc;
 
 @mixin make-advanced-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
   // Common properties for all breakpoints
@@ -28,35 +17,7 @@
   @each $breakpoint in map-keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
-    // Allow columns to stretch full width below their breakpoints
-    // @for $i from 1 through $columns {
-    //   .col#{$infix}-#{$i} {
-    //     @extend %grid-column;
-    //   }
-    // }
-    // .col#{$infix},
-    // .col#{$infix}-auto {
-    //   @extend %grid-column;
-    // }
-
     @include media-breakpoint-up($breakpoint, $breakpoints) {
-      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
-      // .col#{$infix} {
-      //   flex-basis: 0;
-      //   flex-grow: 1;
-      //   max-width: 100%;
-      // }
-      // .col#{$infix}-auto {
-      //   flex: 0 0 auto;
-      //   width: auto;
-      //   max-width: 100%; // Reset earlier grid tiers
-      // }
-
-      // @for $i from 1 through $columns {
-      //   .col#{$infix}-#{$i} {
-      //     @include make-col($i, $columns);
-      //   }
-      // }
 
       .order#{$infix}-first .block-editor-block-list__layout [data-type="advanced-bootstrap-blocks/column"] { order: -1; }
 
@@ -93,12 +54,6 @@
 @if $enable-grid-classes {
   @include make-advanced-grid-columns();
 }
-
-// @import "../node_modules/bootstrap/scss/mixins/grid";
-// @import "../node_modules/bootstrap/scss/mixins/buttons";
-// @import "../node_modules/bootstrap/scss/grid";
-// @import "../node_modules/bootstrap/scss/buttons";
-// @import "../node_modules/bootstrap/scss/utilities/display";
 
 // contents of: @import "../node_modules/bootstrap/scss/utilities/flex";
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -187,7 +142,7 @@
     margin-bottom: 0 !important;
     .components-base-control__field {
       .components-base-control__label {
-        // max-width: 100%; 
+        // max-width: 100%;
         width: auto;
       }
       .components-text-control__input {
@@ -202,22 +157,22 @@
 
 [data-type^="advanced-bootstrap-blocks/"] {
   &.wp-block {
-    max-width: 100%; 
+    max-width: 100%;
     margin-left: initial;
     margin-right: initial;
     margin-top: 0;
-    margin-bottom: 0; 
+    margin-bottom: 0;
     padding-left: initial;
     padding-right: initial;
-    .container, 
+    .container,
     .container-fluid {
-      border: 1px dashed red; 
-      padding: 0; 
-      width: auto; 
+      border: 1px dotted $containerColor;
+      padding: 0;
+      width: auto;
     }
   }
   .block-list-appender {
-    margin: 0 !important; 
+    margin: 0 !important;
   }
 }
 [data-type="advanced-bootstrap-blocks/container"] {
@@ -231,7 +186,7 @@
 [data-type="advanced-bootstrap-blocks/container"],
 [data-type="advanced-bootstrap-blocks/row"],
 [data-type="advanced-bootstrap-blocks/jumbotron"] {
-  padding: 0 !important; 
+  padding: 0 !important;
   .block-editor-inner-blocks > .block-editor-block-list__layout {
     @include make-container();
     padding-top: 15px;
@@ -243,19 +198,19 @@
   &.block-editor-block-list__block {
     padding: 0;
     &.wp-block.container-fluid {
-      max-width: 100%; 
+      max-width: 100%;
     }
   }
   .block-editor-block-list__block {
     max-width: 100%;
-    width: 100%; 
+    width: 100%;
   }
 }
 [data-type="advanced-bootstrap-blocks/container"],
 [data-type="advanced-bootstrap-blocks/card"],
 [data-type="advanced-bootstrap-blocks/jumbotron"] {
   > .block-editor-block-list__block-edit {
-    padding: 0 !important; 
+    padding: 0 !important;
     margin: 0 !important;
   }
   > .container, > .container-fluid {
@@ -267,31 +222,31 @@
 }
 [data-type="advanced-bootstrap-blocks/row"],
 [data-type="advanced-bootstrap-blocks/jumbotron"] {
-  max-width: 100%; 
+  max-width: 100%;
   width: 100%;
-  padding: 0; 
-  
+  padding: 0;
+
   .block-editor-block-list__block-edit {
-    padding: 0 !important; 
-    margin: 0 !important; 
-    width: 100%; 
-    max-width: 100%; 
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    max-width: 100%;
     > [data-block] {
       margin: 0;
     }
   }
   > div:not(.block-editor-block-list__block-edit) {
-    width: 100%; 
+    width: 100%;
   }
   > .block-editor-block-list__block-edit > [data-block] > div, // 5.2
   > div:not(.block-editor-block-list__block-edit):not(.block-editor-block-list__insertion-point) { // 5.3+
-    border: 1px dashed orange; 
+    border: 1px dotted $rowColor;
     > .block-editor-inner-blocks > .block-editor-block-list__layout {
       @include make-row();
       margin-left: 0 !important;
-      margin-right: 0 !important; 
+      margin-right: 0 !important;
       > .block-list-appender {
-        &:not(:first-child) { 
+        &:not(:first-child) {
           position: absolute;
           top: 8px;
           right: 8px;
@@ -315,13 +270,13 @@
 
   [data-type="core/heading"],
   [data-type="core/paragraph"] {
-    margin: initial; 
+    margin: initial;
     padding: initial;
     &.is-selected {}
   }
-  
+
   &.col {
-    border: 1px dashed green; 
+    border: 1px dotted $columColor;
   }
 
   [data-type="core/heading"] + [data-type="core/paragraph"] {
@@ -333,10 +288,10 @@
 
   > div {
     p:empty {
-      display: none; 
+      display: none;
     }
     .wp-block-cover, .wp-block-cover-image {
-      margin: 0; 
+      margin: 0;
     }
   }
 }
@@ -376,7 +331,7 @@
 [data-type="advanced-bootstrap-blocks/card-header"] {
   [data-type="core/heading"] {
     h1,h2,h3,h4,h5,h6,p {
-      margin-top: 0; 
+      margin-top: 0;
     }
   }
   > [data-type="core/paragraph"] {
@@ -389,7 +344,7 @@
   .block-editor-inner-blocks > .block-editor-block-list__layout {
     display: flex;
     > .block-list-appender {
-      &:not(:first-child) { 
+      &:not(:first-child) {
         position: absolute;
         top: -15px;
         right: -20px;
@@ -407,22 +362,22 @@
 
   }
   .block-editor-url-input__button-modal {
-    position: absolute; 
+    position: absolute;
     right: 0;
     top: 0;
-    margin: 0 auto; 
+    margin: 0 auto;
     max-width: 320px;
-    z-index: 30; 
-    border-radius: 3px; 
+    z-index: 30;
+    border-radius: 3px;
   }
   .block-editor-url-input__button-modal-line {
-    align-items: center; 
+    align-items: center;
   }
   .block-editor-url-input {
     > .components-base-control__field {
-      margin-bottom: 0; 
+      margin-bottom: 0;
       > input[type="text"] {
-        width: 100%; 
+        width: 100%;
       }
     }
   }
@@ -438,14 +393,14 @@
       left: 0;
       right: 0;
       bottom: 0;
-      top: 0; 
+      top: 0;
     }
   }
   .block-editor-block-list__block[data-align=full] {
     margin-left: auto;
     margin-right: auto;
-    padding-left: 0; 
-    padding-right: 0; 
+    padding-left: 0;
+    padding-right: 0;
     .components-disabled {
       .block-editor-inserter { display: none; }
     }
@@ -459,22 +414,22 @@
       padding-top: 15px;
       padding-bottom: 15px;
       &[data-type="advanced-bootstrap-blocks/column"] {
-        padding-right: 0; 
+        padding-right: 0;
         padding-left: 0;
         &:first-child {
-          padding-left: 15px; 
+          padding-left: 15px;
         }
         & + [data-type="advanced-bootstrap-blocks/column"] {
 
         }
         &:last-child {
-          padding-right: 15px; 
+          padding-right: 15px;
         }
       }
     }
   }
   .block-editor-default-block-appender > .block-editor-default-block-appender__content {
     margin-top: 0;
-    margin-bottom: 0; 
+    margin-bottom: 0;
   }
 }

@@ -1,33 +1,33 @@
 const { __ } = wp.i18n;
 
-const { 
+const {
   registerBlockType,
   getBlockDefaultClassName
 } = wp.blocks;
 
 const {
   Fragment
-} = wp.element; 
+} = wp.element;
 
 const {
   InnerBlocks
 } = wp.blockEditor;
 
-import { edit } from './edit'; 
-import { save } from './save'; 
+import { edit } from './edit';
+import { save } from './save';
 import {
-  modifyBlockListBlockContainer, 
+  modifyBlockListBlockContainer,
   modifyGetSaveElementContainer,
   setBlockCustomClassName,
   setBlockAttributes,
-} from './utils'; 
+} from './utils';
 
-import icon from '../core/icon-bootstrap.svg'; 
+import icon from '../core/icon-container.svg';
 
 const defaultClassName = getBlockDefaultClassName("advanced-bootstrap-blocks/container");
 
 const settings = {
-  title: __( 'Container (BS4)', 'advanced-bootstrap-blocks' ),
+  title: __( 'Container', 'advanced-bootstrap-blocks' ),
   description: __(''),
   icon: icon,
   category: 'advanced-bootstrap-blocks',
@@ -81,22 +81,22 @@ const settings = {
   },
   edit: edit,
   save: save,
-} 
+}
 
-registerBlockType( 
-  'advanced-bootstrap-blocks/container', 
+registerBlockType(
+  'advanced-bootstrap-blocks/container',
   settings
 );
 
-wp.hooks.addFilter( 
-  'editor.BlockListBlock', 
-  'advanced-bootstrap-blocks/container/modify-element-edit', 
+wp.hooks.addFilter(
+  'editor.BlockListBlock',
+  'advanced-bootstrap-blocks/container/modify-element-edit',
   modifyBlockListBlockContainer
 );
 
 wp.hooks.addFilter(
-  'blocks.getSaveElement', 
-  'advanced-bootstrap-blocks/container/modify-element-save', 
+  'blocks.getSaveElement',
+  'advanced-bootstrap-blocks/container/modify-element-save',
   modifyGetSaveElementContainer
 );
 

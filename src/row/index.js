@@ -1,10 +1,10 @@
 const { __ } = wp.i18n;
 
-const { 
-  createHigherOrderComponent 
+const {
+  createHigherOrderComponent
 } = wp.compose;
 
-const { 
+const {
   registerBlockType,
   getBlockDefaultClassName
 } = wp.blocks;
@@ -22,7 +22,7 @@ const {
 
 const {
   Fragment
-} = wp.element; 
+} = wp.element;
 
 const {
   RichText,
@@ -33,10 +33,10 @@ const {
   InnerBlocks
 } = wp.blockEditor;
 
-import icon from '../core/icon-bootstrap.svg'; 
+import icon from '../core/icon-row.svg';
 
 registerBlockType('advanced-bootstrap-blocks/row', {
-  title: __('Row (BS4)', 'advanced-bootstrap-blocks'),
+  title: __('Row', 'advanced-bootstrap-blocks'),
   description: __(''),
   icon: icon,
   category: 'advanced-bootstrap-blocks',
@@ -74,14 +74,14 @@ registerBlockType('advanced-bootstrap-blocks/row', {
     } = props;
 
     return (
-      <div 
+      <div
         {...anchor ? { id: anchor } : null }
         className={props.className}
       >
-        <InnerBlocks 
+        <InnerBlocks
           template={ TEMPLATE }
           allowedBlocks={['advanced-bootstrap-blocks/column']}
-        /> 
+        />
       </div>
     );
   },
@@ -90,7 +90,7 @@ registerBlockType('advanced-bootstrap-blocks/row', {
       <Fragment>
           <InnerBlocks.Content />
       </Fragment>
-    );  
+    );
   }
 });
 
@@ -117,10 +117,10 @@ const modifyBlockListBlockRow = createHigherOrderComponent( ( BlockListBlock ) =
     };
 }, 'modifyBlockListBlockRow' );
 
-wp.hooks.addFilter( 
-  'editor.BlockListBlock', 
-  'advanced-bootstrap-blocks/row/modify-element-edit', 
-  modifyBlockListBlockRow 
+wp.hooks.addFilter(
+  'editor.BlockListBlock',
+  'advanced-bootstrap-blocks/row/modify-element-edit',
+  modifyBlockListBlockRow
 );
 
 const modifyGetSaveElementRow = (element, blockType, attributes ) => {
@@ -130,8 +130,8 @@ const modifyGetSaveElementRow = (element, blockType, attributes ) => {
 
   if (blockType.name == 'advanced-bootstrap-blocks/row') {
     return (
-      <div 
-        {...attributes.anchor ? { id: attributes.anchor } : null } 
+      <div
+        {...attributes.anchor ? { id: attributes.anchor } : null }
         className={ ["row", element.props.className].join(" ").trim() }
       >
         {element}
@@ -143,7 +143,7 @@ const modifyGetSaveElementRow = (element, blockType, attributes ) => {
 }
 
 wp.hooks.addFilter(
-  'blocks.getSaveElement', 
-  'advanced-bootstrap-blocks/row/modify-element-save', 
+  'blocks.getSaveElement',
+  'advanced-bootstrap-blocks/row/modify-element-save',
   modifyGetSaveElementRow
 );
