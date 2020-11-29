@@ -8,7 +8,8 @@ const {
   PanelBody,
   PanelRow,
 	FormToggle,
-	ColorPicker
+	ColorPicker,
+	Button
 } = wp.components;
 
 const {
@@ -56,6 +57,12 @@ export const edit = (props) => {
 	const onSelectBackgroundColor = ( value ) => {
 		setAttributes({
 			backgroundColor: value.hex
+		})
+	}
+
+	const onClearBackgroundColor = () => {
+		setAttributes({
+			backgroundColor: ''
 		})
 	}
 
@@ -127,11 +134,14 @@ export const edit = (props) => {
 						initialOpen={false}
 					>
 						<PanelRow>
-							<ColorPicker color={props.attributes.backgroundColor} onChangeComplete={ onSelectBackgroundColor }></ColorPicker>
+							<ColorPicker color={backgroundColor} onChangeComplete={ onSelectBackgroundColor } disableAlpha></ColorPicker>
+						</PanelRow>
+						<PanelRow>
+							<Button onClick={ onClearBackgroundColor } isPrimary>Clear</Button>
 						</PanelRow>
 					</PanelBody>
           <PanelBody
-            title={ __( 'Background Image Settings', 'advanced-bootstrap-blocks' ) }
+            title={ __( 'Background Image', 'advanced-bootstrap-blocks' ) }
             initialOpen={false}
           >
             <PanelRow>

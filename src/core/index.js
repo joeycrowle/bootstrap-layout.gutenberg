@@ -5,39 +5,39 @@ import { CustomPaddingInspector } from './corePaddingInspector.js';
 import { CustomMarginInspector } from './coreMarginInspector.js';
 import { CustomClassNameInspector } from './coreClassNameInspector.js';
 
-addFilter( 
-  'editor.BlockEdit', 
-  'advanced-custom-blocks/custom-column-inspector', 
-  CustomColumnInspector 
+addFilter(
+  'editor.BlockEdit',
+  'advanced-custom-blocks/custom-column-inspector',
+  CustomColumnInspector
 );
 
-addFilter( 
-  'editor.BlockEdit', 
-  'advanced-custom-blocks/custom-padding-inspector', 
-  CustomPaddingInspector 
+addFilter(
+  'editor.BlockEdit',
+  'advanced-custom-blocks/custom-padding-inspector',
+  CustomPaddingInspector
 );
 
-addFilter( 
-  'editor.BlockEdit', 
-  'advanced-custom-blocks/custom-margin-inspector', 
-  CustomMarginInspector 
+addFilter(
+  'editor.BlockEdit',
+  'advanced-custom-blocks/custom-margin-inspector',
+  CustomMarginInspector
 );
 
-addFilter( 
-  'editor.BlockEdit', 
-  'advanced-custom-blocks/custom-classname-inspector', 
-  CustomClassNameInspector 
+addFilter(
+  'editor.BlockEdit',
+  'advanced-custom-blocks/custom-classname-inspector',
+  CustomClassNameInspector
 );
 
 const addSupportReusableCoreBlock = function( settings, name ) {
   if ( name === 'core/block' ) {
       const newSettings = lodash.assign( {}, settings, {
         supports: lodash.assign( {}, settings.supports, {
-          align: true, 
+          align: true,
           default: 'full'
         } ),
       } );
-      settings = newSettings; 
+      settings = newSettings;
   }
   return settings;
 }
@@ -55,8 +55,8 @@ const modifyReusableCoreBlock = createHigherOrderComponent( ( BlockListBlock ) =
     return <BlockListBlock { ...props } />;
   };
 }, 'modifyBlockListBlockContainer' );
-addFilter( 
-  'editor.BlockListBlock', 
+addFilter(
+  'editor.BlockListBlock',
   'advanced-bootstrap-blocks/core/modify-element-edit',
-   modifyReusableCoreBlock 
+   modifyReusableCoreBlock
 );
