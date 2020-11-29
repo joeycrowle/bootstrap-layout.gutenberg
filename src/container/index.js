@@ -50,7 +50,11 @@ const settings = {
     isWrapped: {
       type: 'bool',
       default: false
-    },
+		},
+		backgroundColor: {
+			type: 'string',
+			default: '',
+		},
     backgroundImage: {
       type: 'object',
       default: {},
@@ -105,25 +109,3 @@ wp.hooks.addFilter(
 	'advanced-bootstrap-blocks/container/set-block-custom-class-name',
 	setBlockCustomClassName
 );
-
-// wp.hooks.addFilter(
-// 	'blocks.getBlockAttributes',
-// 	'advanced-bootstrap-blocks/container/set-block-attributes',
-// 	setBlockAttributes
-// );
-
-
-// const fixForRenamedBlockClassNames = (props, blockType, attributes) => {
-//   if (blockType.name === 'advanced-bootstrap-blocks/container') {
-//       if (props.className.includes(defaultClassName)) {
-//           props.className = props.className.replace(`${defaultClassName} `, '');
-//       }
-//   }
-//   return props;
-// };
-
-// wp.hooks.addFilter(
-//   'blocks.getSaveContent.extraProps',
-//   'advanced-bootstrap-blocks/container/block-filters',
-//   fixForRenamedBlockClassNames
-// );
