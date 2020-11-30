@@ -188,6 +188,7 @@ export const CustomColumnInspector = createHigherOrderComponent( ( BlockEdit ) =
           defaultOffsetValue: typeof offsetValue !== "undefined" ? offsetValue : '',
         }
       });
+			console.log(columnObject);
 
       return (
         <Fragment>

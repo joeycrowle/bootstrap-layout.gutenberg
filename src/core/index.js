@@ -4,6 +4,7 @@ import { CustomColumnInspector } from './coreColumnInspector.js';
 import { CustomPaddingInspector } from './corePaddingInspector.js';
 import { CustomMarginInspector } from './coreMarginInspector.js';
 import { CustomClassNameInspector } from './coreClassNameInspector.js';
+import { CustomAlignInspector } from './coreAlignInspector.js';
 
 addFilter(
   'editor.BlockEdit',
@@ -21,6 +22,12 @@ addFilter(
   'editor.BlockEdit',
   'advanced-custom-blocks/custom-margin-inspector',
   CustomMarginInspector
+);
+
+addFilter(
+	'editor.BlockEdit',
+	'advanced-custom-blocks/custom-align-inspector',
+	CustomAlignInspector
 );
 
 addFilter(
