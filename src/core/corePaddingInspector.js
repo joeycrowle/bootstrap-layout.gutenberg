@@ -6,32 +6,32 @@ const { createHigherOrderComponent, withState } = wp.compose;
 
 const strToRegex = (property, breakpoint) => {
   const paddingProperty = property.replace('a', '');
-  const paddingBreakpoint = breakpoint.replace('xs', ''); 
+  const paddingBreakpoint = breakpoint.replace('xs', '');
   const regexString = `[p]{1}(property)[-](breakpoint)[-]?([0-5]\\b)`
     .replace('property', `${paddingProperty}`)
     .replace('breakpoint', `${paddingBreakpoint}`);
 
-  return new RegExp(regexString); 
+  return new RegExp(regexString);
 }
 
 const removePaddingClass = (classNameList, property, breakpoint) => {
   if (typeof classNameList !== "undefined") {
-    const regex = strToRegex(property, breakpoint); 
+    const regex = strToRegex(property, breakpoint);
 
     return classNameList
       .split(" ")
-      .filter(name => !name.match(regex)); 
+      .filter(name => !name.match(regex));
   }
 }
 
 const returnPaddingValue = (props, property, breakpoint) => {
   if (typeof props.attributes.className !== "undefined") {
-    const regex = strToRegex(property, breakpoint); 
-    const results = props.attributes.className.length && props.attributes.className.match(regex) ? Number(props.attributes.className.match(regex)[3]) : -1; 
+    const regex = strToRegex(property, breakpoint);
+    const results = props.attributes.className.length && props.attributes.className.match(regex) ? Number(props.attributes.className.match(regex)[3]) : -1;
     if (results > -1) {
       return results;
     }
-  }   
+  }
   return '';
 }
 
@@ -41,11 +41,11 @@ const PaddingControl = withState({
 
   useEffect(() => {
     const classNameArray = removePaddingClass(classNameList, property, breakpoint) || [];
-    let classNameListUpdated; 
+    let classNameListUpdated;
 
     if (typeof padding !== "undefined" && padding.toString().length && padding > -1) {
       const newClassNamePaddingPrefix = `p${property}-${breakpoint}-`.replace('a','').replace('-xs', '');
-      const newClassNamePaddingClass = padding >= 0 ? `${newClassNamePaddingPrefix}${padding}` : ''; 
+      const newClassNamePaddingClass = padding >= 0 ? `${newClassNamePaddingPrefix}${padding}` : '';
       classNameListUpdated = typeof classNameArray !== "undefined" && classNameArray
         .concat(newClassNamePaddingClass)
         .join(' ')
@@ -57,11 +57,11 @@ const PaddingControl = withState({
         .trim()
         .replace(/\s\s+/, ' ');
     }
-    
-    setAttributes( { 
+
+    setAttributes( {
       className: classNameListUpdated
-    });  
-  }, [padding]); 
+    });
+  }, [padding]);
 
   const getPaddingValue = (padding, defaultValue) => {
     return padding > -1 ? padding : defaultValue;
@@ -69,14 +69,14 @@ const PaddingControl = withState({
 
   return (
     <RangeControl
-      label={ 
+      label={
         `.p${property}-${breakpoint}-${getPaddingValue(padding, defaultValue)}`
           .replace('a', '')
           .replace('-xs', '')
       }
       value={ getPaddingValue(padding, defaultValue) }
       allowReset
-      onChange={ 
+      onChange={
         padding => {
           setState({
             padding: padding
@@ -93,14 +93,14 @@ const PaddingControl = withState({
 
 export const CustomPaddingInspector = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-    if (props.name.includes("advanced-bootstrap-blocks") || props.name.includes("core")) {
+    if (props.name.includes("advanced-bootstrap-blocks")) {
       const properties = ['a','x','y','t','r','b','l'];
       const breakpoints = ['xs','sm','md','lg','xl'];
 
       let paddingObject = paddingObject || {};
       breakpoints.map( breakpoint => {
-        properties.map( property => { 
-          const paddingValue = returnPaddingValue(props, property, breakpoint); 
+        properties.map( property => {
+          const paddingValue = returnPaddingValue(props, property, breakpoint);
           paddingObject[`p${property}-${breakpoint}`] = {
             ref: useRef(`p${property}-${breakpoint}`),
             property: property,
@@ -108,7 +108,7 @@ export const CustomPaddingInspector = createHigherOrderComponent( ( BlockEdit ) 
             defaultValue: typeof paddingValue !== "undefined" ? paddingValue : '',
           }
         });
-      });  
+      });
 
       return (
         <Fragment>
@@ -122,8 +122,8 @@ export const CustomPaddingInspector = createHigherOrderComponent( ( BlockEdit ) 
               props.isSelected && Object.keys(paddingObject).map((key, index) => {
                   return (
                     <PanelRow key={index}>
-                      <PaddingControl 
-                        property={ paddingObject[key].property } 
+                      <PaddingControl
+                        property={ paddingObject[key].property }
                         breakpoint={ paddingObject[key].breakpoint }
                         defaultValue={ paddingObject[key].defaultValue }
                         classNameList={ props.attributes.className }
@@ -138,7 +138,7 @@ export const CustomPaddingInspector = createHigherOrderComponent( ( BlockEdit ) 
         </Fragment>
       );
     } else {
-      return <BlockEdit { ...props } />; 
+      return <BlockEdit { ...props } />;
     }
 	};
 }, 'CustomPaddingInspector' );
