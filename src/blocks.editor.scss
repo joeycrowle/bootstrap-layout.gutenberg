@@ -220,6 +220,9 @@ $columColor: #00ffcc;
     }
   }
 }
+[data-type="advanced-bootstrap-blocks/row"] {
+	margin: 0 !important;
+}
 [data-type="advanced-bootstrap-blocks/row"],
 [data-type="advanced-bootstrap-blocks/jumbotron"] {
   max-width: 100%;
@@ -385,8 +388,8 @@ $columColor: #00ffcc;
 
 .block-editor-block-list__layout {
   @media (min-width: 600px) {
-    padding-left: 85px;
-    padding-right: 85px;
+    padding-left: 0;
+    padding-right: 0;
   }
   .block-editor-block-list__block {
     .block-editor-block-list__block-edit:before {

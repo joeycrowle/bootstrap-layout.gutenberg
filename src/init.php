@@ -109,3 +109,10 @@ function advanced_bootstrap_blocks_block_assets() { // phpcs:ignore
 
 // Hook: Block assets.
 add_action( 'init', 'advanced_bootstrap_blocks_block_assets' );
+
+add_filter( 'admin_body_class', function( $classes ) {
+	if(is_admin()) {
+		$classes .= " bootstrap-layout";
+		return $classes;
+	}
+} );
