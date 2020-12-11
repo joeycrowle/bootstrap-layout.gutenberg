@@ -10664,6 +10664,9 @@ a.text-dark:hover, a.text-dark:focus {
 [data-type="advanced-bootstrap-blocks/row"] {
   margin: 0 !important; }
 
+[data-type="advanced-bootstrap-blocks/container"] {
+  max-width: initial !important; }
+
 [data-type="advanced-bootstrap-blocks/row"],
 [data-type="advanced-bootstrap-blocks/jumbotron"] {
   max-width: 100%;
